@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Lacons',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          color: const Color(0xffD4A373)
+          color: const Color(0xFF359D9E)
         )
       ),
       initialRoute: loginRoute,
