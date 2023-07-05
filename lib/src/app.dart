@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Lacons',
+      title: 'Pondok',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           color: const Color(0xFF359D9E)

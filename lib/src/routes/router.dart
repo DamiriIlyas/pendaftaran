@@ -21,4 +21,5 @@ final List<GetPage<dynamic>>? routes = [
   GetPage(name: pengumumanRoute, page: () => pengumuman()),
   GetPage(name: lembagaRoute, page: () => lembaga()),
   GetPage(name: persyaratanRoute, page: () => persyaratan()),
+  GetPage(name: dashboardRoute, page: () => Dashboard()),
 ];
