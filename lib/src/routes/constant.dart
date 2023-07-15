@@ -14,4 +14,4 @@ const String lembagaRoute = '/lembaga';
 const String mtsRoute = '/mts';
 const String maRoute = '/ma';
 const String pembayaranRoute = '/pembayaran';
-const String profilpondokRoute = '/profilpondok';
+const String profilRoute = '/profil';

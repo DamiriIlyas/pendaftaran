@@ -1,7 +1,9 @@
 // import 'package:pendaftaran/src/router/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pendaftaran/src/controller/AddFormController.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
+import 'package:pendaftaran/src/storage/preference.dart';
 
 class IsiFormulir extends StatefulWidget {
   const IsiFormulir({super.key});
@@ -11,6 +13,40 @@ class IsiFormulir extends StatefulWidget {
 }
 
 class _IsiFormulirState extends State<IsiFormulir> {
+  TextEditingController namaLengkap = TextEditingController();
+  TextEditingController nisn = TextEditingController();
+  TextEditingController jenisKelamin = TextEditingController();
+  TextEditingController ttl = TextEditingController();
+  TextEditingController alamat = TextEditingController();
+  TextEditingController asalSekolah = TextEditingController();
+  TextEditingController tahunLulus = TextEditingController();
+  TextEditingController namaWali = TextEditingController();
+  TextEditingController nik = TextEditingController();
+  TextEditingController pekerjaanWali = TextEditingController();
+  TextEditingController alamatWali = TextEditingController();
+  TextEditingController nomorWa = TextEditingController();
+  TextEditingController pilihanSekolah = TextEditingController();
+  AddFormController addForm = Get.put(AddFormController());
+  // final upload = Get.put(UploadController());
+  bool validate = false;
+
+  String? userId;
+
+  getAtribute() async {
+    userId = await getId();
+
+    String? user;
+    setState(() {
+      user = userId;
+    });
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    getAtribute();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,7 +94,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20, top: 60, bottom: 20),
                     child: Container(
-                      height: 1060,
+                      height: 1150,
                       width: 320,
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -138,104 +174,69 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          'Nama Lengkap',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                       TextField(
+                                        controller: namaLengkap,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Nama Lengkap",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                          SizedBox(height: 3),
-                                         Text(
-                                          'NISN',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                        TextField(
+                                          controller: nisn,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "NISN",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                         Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                   SizedBox(height: 3),
-                                  Text(
-                                          'Jenis Kelamin',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                  TextField(
+                                        controller: jenisKelamin,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Jenis Kelamin",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                          SizedBox(height: 3),
-                                         Text(
-                                          'Tempat Tanggal Lahir',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                         TextField(
+                                          controller: ttl,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Tempat Tanggal Lahir",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                         Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                   SizedBox(height: 3),
-                                  Text(
-                                          'Alamat Lengkap',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                  TextField(
+                                    controller: alamat,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Alamat Lengkap",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                          SizedBox(height: 3),
-                                         Text(
-                                          'Asal Sekolah',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                         TextField(
+                                          controller: asalSekolah,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Asal Sekolah",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                         Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                   SizedBox(height: 3),
-                                  Text(
-                                          'Tahun Lulus',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                  TextField(
+                                    controller: tahunLulus,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Tahun Lulus",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
-                                   SizedBox(height: 7),
+                                       ),
+                                   SizedBox(height: 10),
                                         Center(
                                         child: Container(
                                           height: 25,
@@ -255,76 +256,51 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                         ),
                                      ),
                                      SizedBox(height: 10),
-                                  Text(
-                                          'Nama Wali',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                  TextField(
+                                    controller: namaWali,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Nama Wali",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                   SizedBox(height: 3),
-                                         Text(
-                                          'NIK',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                        TextField(
+                                          controller: nik,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "NIK",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                         Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                   SizedBox(height: 3),
-                                  Text(
-                                          'Pekerjaan Wali',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                  TextField(
+                                    controller: pekerjaanWali,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Pekerjaan Wali",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                          SizedBox(height: 3),
-                                         Text(
-                                          'Alamat Wali',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                         TextField(
+                                          controller: alamatWali,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Alamat Wali",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                         Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
+                                       ),
                                   SizedBox(height: 3),
-                                  Text(
-                                          'Nomor WhatsApp',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
+                                  TextField(
+                                    controller: nomorWa,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Nomor WhatsApp",
+                                          
                                         ),
-                                        SizedBox(height: 15),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
-                                  SizedBox(height: 7),
+                                       ),
+                                  SizedBox(height: 10),
                                         Center(
                                         child: Container(
                                           height: 25,
@@ -334,7 +310,8 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                               borderRadius: BorderRadius.circular(20)),
                                           child: Center(
                                             child: Text(
-                                              'Pilihan Sekolah',
+                                            
+                                              'Tujuan Sekolah',
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   color: Colors.white,
@@ -343,36 +320,36 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           ),
                                         ),
                                      ),
-                                     SizedBox(height: 20),
+                                     SizedBox(height: 15),
+                                         TextField(
+                                          controller: pilihanSekolah,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                          hintText: "Tujuan Sekolah",
+                                          
+                                        ),
+                                       ),
+                                       SizedBox(height: 10,),
+                                       Center(
+                                        child: Stack(
+                                          children: [
+                                            InkWell(
+                                              onTap: (){
+                                                upload.uploadImage(ImageSource.gallery, userId!);
+                                              },
+                                              child: Container(
+                                                height: 150,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                    color: Color.fromARGB(255, 97, 200, 202),
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    image: DecorationImage(
+                                                        image: AssetImage('assets/oya.png'),
+                                                        fit: BoxFit.cover)),
+                                              ),
+                                            ),
+                                           SizedBox(height: 20),
                                          Text(
-                                          'Madrasah Tsanawiyah',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        SizedBox(height: 10),
-                                         Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
-                                  SizedBox(height: 3),
-                                  Text(
-                                          'Madrasah Aliyah',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Padding(
-                                    padding: EdgeInsets.only(left: 3, right: 3),
-                                    child: Divider(
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
-                                   SizedBox(height: 3),
-                                  Text(
                                           '*Wajib Bermukim Di Pondok',
                                           style: TextStyle(
                                               fontSize: 12,
@@ -382,7 +359,31 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                   SizedBox(height: 50),
                                   Center(
                 child: InkWell(
-                  onTap: () => Get.toNamed(dashboardRoute),
+                    onTap: () async {
+                      userId;
+                      getId();
+                      if (namaLengkap.text.isEmpty ||
+                          nisn.text.isEmpty ||
+                          jenisKelamin.text.isEmpty ||
+                          ttl.text.isEmpty ||
+                          alamat.text.isEmpty ||
+                          asalSekolah.text.isEmpty ||
+                          tahunLulus.text.isEmpty ||
+                          namaWali.text.isEmpty ||
+                          nik.text.isEmpty ||
+                          pekerjaanWali.text.isEmpty ||
+                          alamatWali.text.isEmpty ||
+                          nomorWa.text.isEmpty ||
+                          pilihanSekolah.text.isEmpty
+                          ) {
+                        userId;
+                        setState(() {
+                          validate = true;
+                        });
+                      } else {
+                        await addForm.addFormulir(namaLengkap.text, nisn.text, jenisKelamin.text, ttl.text, alamat.text, asalSekolah.text, tahunLulus.text, namaWali.text, nik.text, pekerjaanWali.text, alamatWali.text, nomorWa.text, pilihanSekolah.text, userId.toString());
+                      }
+                    },
                   child: Container(
                     height: 40,
                     width: 150,
@@ -412,12 +413,12 @@ class _IsiFormulirState extends State<IsiFormulir> {
                   ),
                 ),
               ),
-                                  ],
-                                ),
-                              ),
-                      ),
-                                  ],
-                                ),
+              ],
+              ),
+              ),
+                  ),
+                ],
+                ),
                   ),
                       ),
                     ),

@@ -23,9 +23,9 @@ class _LoginPage extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-     return SafeArea(
-       child: Scaffold(
-        appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
+       appBar: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -43,7 +43,7 @@ class _LoginPage extends State<LoginPage> {
               children: [
                 Center(
                   child: Image.asset(
-                    LogoPondok,
+                    'assets/LogoPondok.png',
                     height: 100,
                     width: 100,
                   ),
@@ -68,96 +68,113 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 55),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    'Alamat Email',
-                    style: TextStyle(
-                      fontSize: 20,
+                SizedBox(height:25),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: Text(
+                  'Email',
+                  style: TextStyle(
                       color: Color(0xFf359D9E),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
                 ),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: TextField(
-                    // controller: email,
-                    // controller: address,
-                    decoration: InputDecoration(
-                      filled: true,
-                      hintText: 'Masukkan Email',
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    'Password',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFf359D9E),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: TextField(
-                    // obscureText: _isHidden,
-                    // controller: password,
-                    // controller: address,
-                    decoration: InputDecoration(
-                      hintText: 'Masukkan Password',
-                    ),
-                  ),
-                ),
-                SizedBox(height: 60),
-                Center(
-                  child: InkWell(
-                    onTap: () async{
-                      if(email.text.isEmpty || password.text.isEmpty) {
-                        setState(() {
-                          validate = true;
-                        });
-                        await loginCon.loginUser(email.text, password.text);
-                      }
-                    child: Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          
-                          colors: [Colors.greenAccent, Colors.blueAccent],),
-                        borderRadius: BorderRadius.circular(30),
-                         boxShadow: [
-                          BoxShadow(
-                              color: Colors.black87,
-                              blurRadius: 2,
-                              offset: const Offset(0, 1),
-                              ),
-                         ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Masuk',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    );
-                },
-            )
-            )],
+              ),
             ),
-          ),
-        ),
-         ),
-     );
+            SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Color(0xffFFD9D9D9)),
+                child: TextField(
+                    controller: email,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Masukkan Email Anda',
+                      hintStyle: TextStyle(color: Color(0xFf359D9E)),
+                      filled: true,
+                    )),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: Text(
+                  'Password',
+                  style: TextStyle(
+                      color: Color(0xFf359D9E),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+             SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color(0xffFFD9D9D9)),
+                  child: TextField(
+                    obscureText: _isHidden,
+                    controller: password,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Masukkan Password',
+                        hintStyle: TextStyle(color: Color(0xFf359D9E)),
+                        filled: true),
+                  )),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            InkWell(
+              onTap: () async {
+                if (email.text.isEmpty || password.text.isEmpty) {
+                  setState(() {
+                    validate = true;
+                  });
+                } else {
+                  await loginCon.loginUser(email.text, password.text);
+                }
+              },
+              child: Padding(
+                padding: EdgeInsets.only(left: 17, right: 17),
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Color(0xFf359D9E),
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Masuk',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+          ],
+        )),
+      ),
+      ),
+    );
   }
 }

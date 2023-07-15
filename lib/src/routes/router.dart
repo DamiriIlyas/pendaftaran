@@ -9,6 +9,9 @@ import 'package:pendaftaran/src/pages/pembayaran/index.dart';
 import 'package:pendaftaran/src/pages/pengumuman/index.dart';
 import 'package:pendaftaran/src/pages/persyaratan/index.dart';
 import 'package:pendaftaran/src/pages/lembaga/index.dart';
+import 'package:pendaftaran/src/pages/profil/index.dart';
+import 'package:pendaftaran/src/pages/daftarpeserta/ma.dart';
+import 'package:pendaftaran/src/pages/daftarpeserta/mts.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 
 final List<GetPage<dynamic>>? routes = [
@@ -22,4 +25,6 @@ final List<GetPage<dynamic>>? routes = [
   GetPage(name: lembagaRoute, page: () => lembaga()),
   GetPage(name: persyaratanRoute, page: () => persyaratan()),
   GetPage(name: dashboardRoute, page: () => Dashboard()),
+  GetPage(name: profilRoute, page: () => profil()),
+  GetPage(name: daftarpesertaRoute, page: () => daftarpeserta()),
 ];

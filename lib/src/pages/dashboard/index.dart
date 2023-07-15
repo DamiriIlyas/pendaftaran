@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 import 'package:pendaftaran/src/service/assets.dart';
+import 'package:pendaftaran/src/storage/preference.dart';
+import 'package:pendaftaran/src/service/api.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -11,6 +13,26 @@ class Dashboard extends StatefulWidget {
 }
 
 class _Dashboard extends State<Dashboard> {
+  String? name;
+  String? id;
+
+  getAtribute() async {
+    name = await getName();
+    id = await getId();
+    String? nama;
+    String?userId;
+    setState(() {
+      nama = name;
+      userId = id;
+    });
+  }
+
+  @override
+  void initState() {
+    getAtribute();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -62,7 +84,7 @@ class _Dashboard extends State<Dashboard> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  'Muhammad Dani',
+                                  '${name}',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -110,7 +132,7 @@ class _Dashboard extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () => Get.toNamed(isiformulirRoute),
+                          onTap: () => Get.toNamed(isiformulirRoute, arguments: [id]),
                           child: Column(
                             children: [
                               Image.asset(
@@ -192,7 +214,7 @@ class _Dashboard extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () => Get.toNamed(profilpondokRoute),
+                          onTap: () => Get.toNamed(lembagaRoute),
                           child: Column(
                             children: [
                               Image.asset(
@@ -228,7 +250,7 @@ class _Dashboard extends State<Dashboard> {
                           ),
                         ),
                         InkWell(
-                          onTap: () => Get.toNamed(maRoute),
+                          onTap: () => Get.toNamed(),
                           child: Column(
                             children: [
                               Image.asset(
