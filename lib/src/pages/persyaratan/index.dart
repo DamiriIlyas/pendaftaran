@@ -60,7 +60,7 @@ class _persyaratanState extends State<persyaratan> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20, top: 60, bottom: 20),
                     child: Container(
-                      height: 630,
+                      height: 800,
                       width: 320,
                       decoration: BoxDecoration(
                           color: Colors.white,

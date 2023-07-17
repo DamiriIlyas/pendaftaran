@@ -28,6 +28,8 @@ class _IsiFormulirState extends State<IsiFormulir> {
   TextEditingController pilihanSekolah = TextEditingController();
   AddFormController addForm = Get.put(AddFormController());
   // final upload = Get.put(UploadController());
+  String? selectedJenisKelamin;
+  String? selectedPilihanSekolah;
   bool validate = false;
 
   String? userId;
@@ -54,7 +56,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
       backgroundColor: Color(0xffEDEDED),
         body: SingleChildScrollView(
           child: Column(
-            children: [
+            children: <Widget>[
               Stack(
                 children: [
                   Container(
@@ -64,37 +66,34 @@ class _IsiFormulirState extends State<IsiFormulir> {
                             colors: [
                   Colors.greenAccent, Colors.blueAccent],
                           ),),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 20),
-                          child: InkWell(
-                            onTap: () => Get.toNamed(dashboardRoute),
-                            child: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20, left: 10),
-                          child: Text(
-                            'Isi Formulir',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                        )
-                      ],
-                    ),
+                    // child: Row(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(left: 10, top: 20),
+                    //       child: Icon(
+                    //         Icons.arrow_back,
+                    //         color: Colors.white,
+                    //         size: 20,
+                    //       ),
+                    //     ),
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(top: 20, left: 10),
+                    //       child: Text(
+                    //         'Isi Formulir',
+                    //         style: TextStyle(
+                    //             color: Colors.white,
+                    //             fontWeight: FontWeight.bold,
+                    //             fontSize: 18),
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20, top: 60, bottom: 20),
+                    padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
                     child: Container(
-                      height: 1150,
+                      height: 1100,
                       width: 320,
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -192,21 +191,33 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                         ),
                                        ),
                                   SizedBox(height: 3),
-                                  TextField(
-                                        controller: jenisKelamin,
-                                        style: TextStyle(color: Colors.black),
+                                      DropdownButtonFormField<String>(
+                                        value: selectedJenisKelamin,
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            selectedJenisKelamin = newValue;
+                                          });
+                                        },
+                                        items: [
+                                          DropdownMenuItem(
+                                            value: "Laki-laki",
+                                            child: Text("Laki-laki"),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: "Perempuan",
+                                            child: Text("Perempuan"),
+                                          ),
+                                        ],
                                         decoration: InputDecoration(
                                           hintText: "Jenis Kelamin",
-                                          
                                         ),
-                                       ),
+                                      ),
                                          SizedBox(height: 3),
                                          TextField(
                                           controller: ttl,
                                         style: TextStyle(color: Colors.black),
                                         decoration: InputDecoration(
                                           hintText: "Tempat Tanggal Lahir",
-                                          
                                         ),
                                        ),
                                   SizedBox(height: 3),
@@ -310,7 +321,6 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                               borderRadius: BorderRadius.circular(20)),
                                           child: Center(
                                             child: Text(
-                                            
                                               'Tujuan Sekolah',
                                               style: TextStyle(
                                                   fontSize: 12,
@@ -320,35 +330,48 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           ),
                                         ),
                                      ),
-                                     SizedBox(height: 15),
-                                         TextField(
-                                          controller: pilihanSekolah,
-                                        style: TextStyle(color: Colors.black),
+                                     SizedBox(height: 3),
+                                      DropdownButtonFormField<String>(
+                                        value: selectedPilihanSekolah,
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            selectedPilihanSekolah = newValue;
+                                          });
+                                        },
+                                        items: [
+                                          DropdownMenuItem(
+                                            value: "MTS Babul Futuh",
+                                            child: Text("MTS Babul Futuh"),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: "MA Babul Futuh",
+                                            child: Text("MA Babul Futuh"),
+                                          ),
+                                        ],
                                         decoration: InputDecoration(
                                           hintText: "Tujuan Sekolah",
-                                          
                                         ),
-                                       ),
+                                      ),
                                        SizedBox(height: 10,),
-                                       Center(
-                                        child: Stack(
-                                          children: [
-                                            InkWell(
-                                              onTap: (){
-                                                upload.uploadImage(ImageSource.gallery, userId!);
-                                              },
-                                              child: Container(
-                                                height: 150,
-                                                width: 150,
-                                                decoration: BoxDecoration(
-                                                    color: Color.fromARGB(255, 97, 200, 202),
-                                                    borderRadius: BorderRadius.circular(100),
-                                                    image: DecorationImage(
-                                                        image: AssetImage('assets/oya.png'),
-                                                        fit: BoxFit.cover)),
-                                              ),
-                                            ),
-                                           SizedBox(height: 20),
+                                      //  Center(
+                                      //   child: Stack(
+                                      //     children: [
+                                      //       InkWell(
+                                      //         onTap: (){
+                                      //           // upload.uploadImage(ImageSource.gallery, userId!);
+                                      //         },
+                                      //         child: Container(
+                                      //           height: 150,
+                                      //           width: 150,
+                                      //           decoration: BoxDecoration(
+                                      //               color: Color.fromARGB(255, 97, 200, 202),
+                                      //               borderRadius: BorderRadius.circular(100),
+                                      //               image: DecorationImage(
+                                      //                   image: AssetImage('assets/oya.png'),
+                                      //                   fit: BoxFit.cover)),
+                                      //         ),
+                                      //       ),
+                                      //      SizedBox(height: 20),
                                          Text(
                                           '*Wajib Bermukim Di Pondok',
                                           style: TextStyle(
@@ -356,7 +379,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                               color: Color(0xFF359D9E),
                                               fontWeight: FontWeight.w700),
                                         ),
-                                  SizedBox(height: 50),
+                                  SizedBox(height: 20),
                                   Center(
                 child: InkWell(
                     onTap: () async {
@@ -400,31 +423,33 @@ class _IsiFormulirState extends State<IsiFormulir> {
                             ),
                        ],
                     ),
-                    child: Center(
-                      child: Text(
-                        'Kirim',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                    child: InkWell(onTap: () => Get.toNamed(dashboardRoute),
+                      child: Center(
+                        child: Text(
+                          'Kirim',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
+                    ),
                     ),
                   ),
                 ),
-              ),
-              ],
-              ),
-              ),
-                  ),
                 ],
                 ),
-                  ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
+                                     ),
+                                  ],
+                                ),
+                 ),
               ),
+                  ),
+              ),
+            ],
+            ),
               ],
             ),
           ),

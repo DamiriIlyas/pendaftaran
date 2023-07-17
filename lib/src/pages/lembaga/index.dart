@@ -23,14 +23,14 @@ class _lembagaState extends State<lembaga> {
                 children: [
                  Image.asset(
                   oyi,
-                  height: 270,
+                  height: 300,
                   width: MediaQuery.of(context).size.width,
                  ),
                  Center(
                    child: Padding(
                      padding: const EdgeInsets.only(left: 20, right: 20, top: 200),
                      child: Container(
-                      height: 300,
+                      height: 270,
                       width: 300,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -61,6 +61,19 @@ class _lembagaState extends State<lembaga> {
                                           fontSize: 15,
                                           ),
                                     ),
+                                     Text(
+                                      'Pndok Pesantren',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                     SizedBox(height: 5),
+                                     Text(
+                                      'Pondok Pesantren Babul Futuh memiliki 2 lembaga formal yaitu Mts Babul Futuh jenjang SLTP dan MA Babul Futuh jenjang SLTA',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          ),
+                                    ),
                                   ],
                               ),
                       ),
@@ -70,7 +83,9 @@ class _lembagaState extends State<lembaga> {
                  ),
                 ],
               ),
+              
             ],
+            
           ),
         ), 
         ),

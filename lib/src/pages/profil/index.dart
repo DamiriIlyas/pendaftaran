@@ -27,53 +27,40 @@ class _profilState extends State<profil> {
               decoration: BoxDecoration(gradient: LinearGradient(
             colors: [Colors.greenAccent, Colors.blueAccent],
           ),),
-              padding: EdgeInsets.only(left: 10, right: 20),
+              padding: EdgeInsets.only(left: 10, right: 20, top: 20),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: 24,
+                      InkWell(onTap: () => Get.toNamed(dashboardRoute),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {},
                       ),
                       Expanded(
                         child: Text(
-                          'Data Pribadi',
+                          'Hasil Pendaftaran',
                           style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 15),
-                  ListTile(
-                    title: Text(
-                      'Nama Peserta',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 16),
-                    ),
-                    subtitle: Text(
-                      'Nama Sekolah',
-                      style: TextStyle(color: Colors.white, fontSize: 13),
-                    ),
-                    leading: CircleAvatar(),
-                  )
                 ],
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 150, bottom: 20),
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 80, bottom: 20),
                 child: Container(
-                height: 1150,
+                height: 600,
                 width: 320,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -89,27 +76,27 @@ class _profilState extends State<profil> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 15),
-                        child: Container(
-                           height: 25,
-                            width: 250,
-                            decoration: BoxDecoration(
-                            color: Color(0xFF359D9E),
-                              borderRadius: BorderRadius.circular(20)),
-                              child: Center(
-                                child: Text(
-                                'Profil',
-                                style: TextStyle(
-                                fontSize: 15,
-                               color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 30),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(
+                      //       horizontal: 10, vertical: 15),
+                      //   child: Container(
+                      //      height: 25,
+                      //       width: 250,
+                      //       decoration: BoxDecoration(
+                      //       color: Color(0xFF359D9E),
+                      //         borderRadius: BorderRadius.circular(20)),
+                      //         child: Center(
+                      //           child: Text(
+                      //           'Data Pribadi',
+                      //           style: TextStyle(
+                      //           fontSize: 15,
+                      //          color: Colors.white,
+                      //       fontWeight: FontWeight.bold),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      SizedBox(height: 15),
                       Container(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: Row(
@@ -225,14 +212,14 @@ class _profilState extends State<profil> {
                           children: [
                             Expanded(
                               child: Text(
-                                'Jenis Kelamin',
+                                'Tempat Lahir',
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              'Laki-Laki',
+                              'Pasuruan',
                               style: TextStyle(
                                   fontSize: 13, color: Color(0xFF9098B1)),
                             )
@@ -246,14 +233,14 @@ class _profilState extends State<profil> {
                           children: [
                             Expanded(
                               child: Text(
-                                'Jenis Kelamin',
+                                'Tanggal Lahir',
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              'Laki-Laki',
+                              '05/07/2004',
                               style: TextStyle(
                                   fontSize: 13, color: Color(0xFF9098B1)),
                             )
@@ -267,14 +254,14 @@ class _profilState extends State<profil> {
                           children: [
                             Expanded(
                               child: Text(
-                                'Jenis Kelamin',
+                                'Alamat Lengkap',
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              'Laki-Laki',
+                              'Pandaan',
                               style: TextStyle(
                                   fontSize: 13, color: Color(0xFF9098B1)),
                             )
@@ -288,14 +275,14 @@ class _profilState extends State<profil> {
                           children: [
                             Expanded(
                               child: Text(
-                                'Jenis Kelamin',
+                                'Tahun Lulus',
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              'Laki-Laki',
+                              '2010',
                               style: TextStyle(
                                   fontSize: 13, color: Color(0xFF9098B1)),
                             )
@@ -309,14 +296,14 @@ class _profilState extends State<profil> {
                           children: [
                             Expanded(
                               child: Text(
-                                'Jenis Kelamin',
+                                'Nama Wali',
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              'Laki-Laki',
+                              'Ainul',
                               style: TextStyle(
                                   fontSize: 13, color: Color(0xFF9098B1)),
                             )
@@ -330,14 +317,119 @@ class _profilState extends State<profil> {
                           children: [
                             Expanded(
                               child: Text(
-                                'Jenis Kelamin',
+                                'NIK Wali',
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             Text(
-                              'Laki-Laki',
+                              '351421345',
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0xFF9098B1)),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Alamat Wali',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              'Pasuruan',
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0xFF9098B1)),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Pekerjaan Wali',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              'Swasta',
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0xFF9098B1)),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Nomor Telepon',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              '089765765345',
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0xFF9098B1)),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Pilihan Sekolah',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              'MTs Babul Futuh',
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0xFF9098B1)),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Upload Berkas',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Text(
+                              'Masukkan Berkas',
                               style: TextStyle(
                                   fontSize: 13, color: Color(0xFF9098B1)),
                             )
@@ -376,38 +468,35 @@ class _profilState extends State<profil> {
                     ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                    height: 40,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        
-                        colors: [Colors.greenAccent, Colors.blueAccent],),
-                      borderRadius: BorderRadius.circular(30),
-                       boxShadow: [
-                        BoxShadow(
-                            color: Colors.black87,
-                            blurRadius: 2,
-                            offset: const Offset(0, 1),
-                            ),
-                            
-                       ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Cetak Formulir',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                        ),
-                      ),
+                     
+                    //   Container(
+                    // height: 40,
+                    // width: 150,
+                    // decoration: BoxDecoration(
+                    //   gradient: LinearGradient(
+                      
+                    //   colors: [Colors.greenAccent, Colors.blueAccent],),
+                    //   borderRadius: BorderRadius.circular(30),
+                    //    boxShadow: [
+                    //   BoxShadow(
+                    //       color: Colors.black87,
+                    //       blurRadius: 2,
+                    //       offset: const Offset(0, 1),
+                    //       ),
+                          
+                    //    ],
+                    // ),
+                    // child: Center(
+                    //   child: Text(
+                    //   'Cetak Formulir',
+                    //   style: TextStyle(
+                    //     fontSize: 15,
+                    //     color: Colors.white,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    //   ),
+                    // ),
+                    //   ),
                     ],
                   ),
                 ),

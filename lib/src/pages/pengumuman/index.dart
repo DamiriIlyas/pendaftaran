@@ -53,7 +53,7 @@ class _pengumumanState extends State<pengumuman> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
                     child: Container(
-                      height: 170,
+                      height: 200,
                       width: 300,
                       decoration: BoxDecoration(
                           color: Colors.white,

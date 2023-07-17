@@ -66,16 +66,15 @@ class _Dashboard extends State<Dashboard> {
                                       Image.asset(
                                         LogoPondok, height: 70,
                                 width: 70,),
-                                      
-                                      Icon(
-                                          Icons.notifications_active,
-                                          color: Colors.white,
-                                          size: 30),
+                                      InkWell(onTap: () => Get.toNamed(notifikasiRoute),
+                                        child: Icon(
+                                            Icons.notifications_active,
+                                            color: Colors.white,
+                                            size: 30),
+                                      ),
                                   ]
-                                  
                                 ),
-                                
-                                SizedBox(height: 20),
+                                SizedBox(height: 15),
                                 Text(
                                   'Assalamualaikum',
                                   style: TextStyle(
@@ -132,7 +131,7 @@ class _Dashboard extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () => Get.toNamed(isiformulirRoute, arguments: [id]),
+                          onTap: () => Get.toNamed(profilRoute, arguments: [id]),
                           child: Column(
                             children: [
                               Image.asset(
@@ -144,13 +143,6 @@ class _Dashboard extends State<Dashboard> {
                               RichText(
                                 textAlign: TextAlign.center,
                                 text: TextSpan(children: [
-                                  TextSpan(
-                                    text: 'Formulir\n',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: Color(0xFF359D9E),
-                                    ),
-                                  ),
                                   TextSpan(
                                       text: 'Pendaftaran',
                                       style: TextStyle(
@@ -250,7 +242,8 @@ class _Dashboard extends State<Dashboard> {
                           ),
                         ),
                         InkWell(
-                          onTap: () => Get.toNamed(),
+                          // onTap: () 
+                          //=> Get.toNamed(),
                           child: Column(
                             children: [
                               Image.asset(
