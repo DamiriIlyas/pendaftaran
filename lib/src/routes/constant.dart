@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const String initialRoute = '/';
+const String awalRoute = '/';
 const String loginRoute = '/login';
 const String dashboardRoute = '/dashboard';
 const String kwitansiRoute = '/kwitansi';
@@ -15,3 +16,4 @@ const String mtsRoute = '/mts';
 const String maRoute = '/ma';
 const String pembayaranRoute = '/pembayaran';
 const String profilRoute = '/profil';
+const String daftarakunRoute = '/daftarakun';

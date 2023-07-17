@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:pendaftaran/src/routes/constant.dart';
 import 'package:pendaftaran/src/service/assets.dart';
 import 'package:pendaftaran/src/controller/LoginController.dart';
 
@@ -36,7 +37,7 @@ class _LoginPage extends State<LoginPage> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 80),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +53,7 @@ class _LoginPage extends State<LoginPage> {
                   child: Text(
                     'Penerimaan Santri Dan',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       color: Color(0xFf359D9E),
                       fontWeight: FontWeight.bold,
                     ),
@@ -62,7 +63,7 @@ class _LoginPage extends State<LoginPage> {
                   child: Text(
                     'Siswa baru',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       color: Color(0xFf359D9E),
                       fontWeight: FontWeight.bold,
                     ),
@@ -134,6 +135,22 @@ class _LoginPage extends State<LoginPage> {
                         filled: true),
                   )),
             ),
+             SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: Text(
+                  'Lupa Password?',
+                  style: TextStyle(
+                      color: Color(0xFf359D9E),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
             SizedBox(
               height: 30,
             ),
@@ -168,6 +185,47 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
             ),
+             SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child: Text(
+                  'Belum punya akun?',
+                  style: TextStyle(
+                      color: Color(0xFf359D9E),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+           InkWell( onTap: () => Get.toNamed(daftarakunRoute),
+             child: Padding(
+               padding: EdgeInsets.only(left: 17, right: 17),
+               child: Container(
+                 height: 50,
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.circular(30),
+                   color: Color(0xFf359D9E),
+                 ),
+                 child: Align(
+                   alignment: Alignment.center,
+                   child: Text(
+                     'Daftar Akun',
+                     style: TextStyle(
+                         color: Colors.white,
+                         fontSize: 17,
+                         fontWeight: FontWeight.w400),
+                   ),
+                 ),
+               ),
+             ),
+           ),
             SizedBox(
               height: 15,
             ),
