@@ -1,9 +1,14 @@
 // import 'package:pendaftaran/src/router/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pendaftaran/src/controller/AddFormController.dart';
+import 'package:pendaftaran/src/controller/UploadController.dart';
+import 'package:pendaftaran/src/controller/UploadFotoController.dart';
+import 'package:pendaftaran/src/controller/UploadSkhuController.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 import 'package:pendaftaran/src/storage/preference.dart';
+import 'package:http/http.dart' as http;
 
 class IsiFormulir extends StatefulWidget {
   const IsiFormulir({super.key});
@@ -27,7 +32,10 @@ class _IsiFormulirState extends State<IsiFormulir> {
   TextEditingController nomorWa = TextEditingController();
   TextEditingController pilihanSekolah = TextEditingController();
   AddFormController addForm = Get.put(AddFormController());
-  // final upload = Get.put(UploadController());
+
+  UploadController upload = Get.put(UploadController());
+  UploadFotoController uploadFoto = Get.put(UploadFotoController());
+  UploadSkhuController uploadSkhu = Get.put(UploadSkhuController());
   String? selectedJenisKelamin;
   String? selectedPilihanSekolah;
   bool validate = false;
@@ -66,34 +74,11 @@ class _IsiFormulirState extends State<IsiFormulir> {
                             colors: [
                   Colors.greenAccent, Colors.blueAccent],
                           ),),
-                    // child: Row(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(left: 10, top: 20),
-                    //       child: Icon(
-                    //         Icons.arrow_back,
-                    //         color: Colors.white,
-                    //         size: 20,
-                    //       ),
-                    //     ),
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(top: 20, left: 10),
-                    //       child: Text(
-                    //         'Isi Formulir',
-                    //         style: TextStyle(
-                    //             color: Colors.white,
-                    //             fontWeight: FontWeight.bold,
-                    //             fontSize: 18),
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
                     child: Container(
-                      height: 1100,
+                      height: 1450,
                       width: 320,
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -247,6 +232,28 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           
                                         ),
                                        ),
+                                       SizedBox(height: 3),
+                                      DropdownButtonFormField<String>(
+                                        value: selectedPilihanSekolah,
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            selectedPilihanSekolah = newValue;
+                                          });
+                                        },
+                                        items: [
+                                          DropdownMenuItem(
+                                            value: "MTS Babul Futuh",
+                                            child: Text("MTS Babul Futuh"),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: "MA Babul Futuh",
+                                            child: Text("MA Babul Futuh"),
+                                          ),
+                                        ],
+                                        decoration: InputDecoration(
+                                          hintText: "Tujuan Sekolah",
+                                        ),
+                                      ),
                                    SizedBox(height: 10),
                                         Center(
                                         child: Container(
@@ -311,7 +318,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           
                                         ),
                                        ),
-                                  SizedBox(height: 10),
+                                      SizedBox(height: 10),
                                         Center(
                                         child: Container(
                                           height: 25,
@@ -321,65 +328,166 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                               borderRadius: BorderRadius.circular(20)),
                                           child: Center(
                                             child: Text(
-                                              'Tujuan Sekolah',
+                                              'Upload Berkas',
                                               style: TextStyle(
-                                                  fontSize: 12,
+                                                  fontSize: 15,
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                         ),
                                      ),
-                                     SizedBox(height: 3),
-                                      DropdownButtonFormField<String>(
-                                        value: selectedPilihanSekolah,
-                                        onChanged: (newValue) {
-                                          setState(() {
-                                            selectedPilihanSekolah = newValue;
-                                          });
-                                        },
-                                        items: [
-                                          DropdownMenuItem(
-                                            value: "MTS Babul Futuh",
-                                            child: Text("MTS Babul Futuh"),
+                                     SizedBox(height: 10,),
+                                       Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                         children: [
+                                          Center(
+                                            child: Text(
+                                              'Upload Ijazah'
+                                            ),
                                           ),
-                                          DropdownMenuItem(
-                                            value: "MA Babul Futuh",
-                                            child: Text("MA Babul Futuh"),
+
+                                          InkWell(
+                                            onTap: () async {
+                                              upload.imageURL.value = await upload.uploadImage(ImageSource.gallery);
+                                            },
+                                            child: Obx(() {
+                                              final imageUrl = upload.imageURL.value;
+
+                                              if(imageUrl == '') {
+                                                return Center(
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(color: Colors.black)
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.upload_file,
+                                                      color: Colors.black
+                                                    ),
+                                                  ),
+                                                );
+                                              }else{
+                                                return Center(
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(color: Colors.black),
+                                                      image: DecorationImage(
+                                                        image: NetworkImage(imageUrl),fit: BoxFit.cover
+                                                      )
+                                                    ),
+                                                    
+                                                  ),
+                                                );
+                                              }
+                                            }),
                                           ),
-                                        ],
-                                        decoration: InputDecoration(
-                                          hintText: "Tujuan Sekolah",
-                                        ),
-                                      ),
-                                       SizedBox(height: 10,),
-                                      //  Center(
-                                      //   child: Stack(
-                                      //     children: [
-                                      //       InkWell(
-                                      //         onTap: (){
-                                      //           // upload.uploadImage(ImageSource.gallery, userId!);
-                                      //         },
-                                      //         child: Container(
-                                      //           height: 150,
-                                      //           width: 150,
-                                      //           decoration: BoxDecoration(
-                                      //               color: Color.fromARGB(255, 97, 200, 202),
-                                      //               borderRadius: BorderRadius.circular(100),
-                                      //               image: DecorationImage(
-                                      //                   image: AssetImage('assets/oya.png'),
-                                      //                   fit: BoxFit.cover)),
-                                      //         ),
-                                      //       ),
-                                      //      SizedBox(height: 20),
-                                         Text(
-                                          '*Wajib Bermukim Di Pondok',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xFF359D9E),
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                  SizedBox(height: 20),
+                                          SizedBox(height: 12,),
+                                          Center(
+                                            child: Text(
+                                              'Upload Skhu'
+                                            ),
+                                          ),
+                                          InkWell(
+                                            onTap: () async {
+                                              uploadSkhu.skhuURL.value = await uploadSkhu.uploadSkhu(ImageSource.gallery);
+                                            },
+                                            child: Obx(() {
+                                              final imageSkhu = uploadSkhu.skhuURL.value;
+
+                                              if(imageSkhu == '') {
+                                                return Center(
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(color: Colors.black)
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.upload_file,
+                                                      color: Colors.black
+                                                    ),
+                                                  ),
+                                                );
+                                              }else{
+                                                return Center(
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(color: Colors.black),
+                                                      image: DecorationImage(
+                                                        image: NetworkImage(imageSkhu),fit: BoxFit.cover
+                                                      )
+                                                    ),
+                                                    
+                                                  ),
+                                                );
+                                              }
+                                            }),
+                                          ),
+                                          SizedBox(height: 12,),
+                                          Center(
+                                            child: Text(
+                                              'Upload Foto'
+                                            ),
+                                          ),
+                                          InkWell(
+                                            onTap: () async {
+                                              uploadFoto.fotoURL.value = await uploadFoto.uploadFoto(ImageSource.gallery);
+                                            },
+                                            child: Obx(() {
+                                              final imageFoto = uploadFoto.fotoURL.value;
+
+                                              if(imageFoto == '') {
+                                                return Center(
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(color: Colors.black)
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.upload_file,
+                                                      color: Colors.black
+                                                    ),
+                                                  ),
+                                                );
+                                              }else{
+                                                return Center(
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(color: Colors.black),
+                                                      image: DecorationImage(
+                                                        image: NetworkImage(imageFoto),fit: BoxFit.cover
+                                                      )
+                                                    ),
+                                                    
+                                                  ),
+                                                );
+                                              }
+                                            }),
+                                          ),
+                                     SizedBox(height: 20),
+                                                     Text(
+                                                      '*Wajib Bermukim Di Pondok',
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Color(0xFF359D9E),
+                                                          fontWeight: FontWeight.w700),
+                                                    ),
+                                  SizedBox(height: 50),
                                   Center(
                 child: InkWell(
                     onTap: () async {
@@ -404,7 +512,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
                           validate = true;
                         });
                       } else {
-                        await addForm.addFormulir(namaLengkap.text, nisn.text, jenisKelamin.text, ttl.text, alamat.text, asalSekolah.text, tahunLulus.text, namaWali.text, nik.text, pekerjaanWali.text, alamatWali.text, nomorWa.text, pilihanSekolah.text, userId.toString());
+                        await addForm.addFormulir(namaLengkap.text, nisn.text, jenisKelamin.text, ttl.text, alamat.text, asalSekolah.text, tahunLulus.text, namaWali.text, nik.text, pekerjaanWali.text, alamatWali.text, nomorWa.text, pilihanSekolah.text, upload.imageURL.toString(),uploadSkhu.skhuURL.toString(),uploadFoto.fotoURL.toString(),getId.toString());
                       }
                     },
                   child: Container(
@@ -423,24 +531,24 @@ class _IsiFormulirState extends State<IsiFormulir> {
                             ),
                        ],
                     ),
-                    child: InkWell(onTap: () => Get.toNamed(dashboardRoute),
-                      child: Center(
-                        child: Text(
-                          'Kirim',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            ),
+                    child: Center(
+                      child: Text(
+                        'Kirim',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                           ),
                         ),
-                    ),
+                      ),
                     ),
                   ),
                 ),
-                ],
-                ),
-                ),
+                                         ],
+                                       ),
+                                      ],
+                                    ),
+                                  ),
                                      ),
                                   ],
                                 ),

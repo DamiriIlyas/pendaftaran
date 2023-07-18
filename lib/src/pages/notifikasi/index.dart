@@ -38,7 +38,7 @@ class _NotifikasiState extends State<Notifikasi> {
                             child: Icon(
                               Icons.arrow_back,
                               color: Colors.white,
-                              size: 20,
+                              size: 22,
                             ),
                           ),
                         ),
@@ -191,7 +191,7 @@ class _NotifikasiState extends State<Notifikasi> {
                                       height: 5,
                                     ),
                                     Text(
-                                      'Bayar Biaya Pendaftaran',
+                                      'Bayar Syariah',
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,

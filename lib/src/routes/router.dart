@@ -16,8 +16,8 @@ import 'package:pendaftaran/src/pages/daftarakun/index.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 
 final List<GetPage<dynamic>>? routes = [
-  GetPage(name: loginRoute, page: () => LoginPage()),
   GetPage(name: awalRoute, page: () => awal()),
+  GetPage(name: loginRoute, page: () => LoginPage()),
   GetPage(name: isiformulirRoute, page: () => IsiFormulir()),
   GetPage(name: kwitansiRoute, page: () => Kwitansi()),
   GetPage(name: metodepembayaranRoute, page: () => MetodePembayaran()),
@@ -29,4 +29,5 @@ final List<GetPage<dynamic>>? routes = [
   GetPage(name: dashboardRoute, page: () => Dashboard()),
   GetPage(name: profilRoute, page: () => profil()),
   GetPage(name: daftarakunRoute, page: () => DaftarAkun()),
+  GetPage(name: daftarpesertaRoute, page: () => DaftarPeserta()),
 ];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pendaftaran/src/pages/daftarpeserta/index.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 import 'package:pendaftaran/src/service/assets.dart';
 import 'package:pendaftaran/src/storage/preference.dart';
@@ -131,7 +132,7 @@ class _Dashboard extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () => Get.toNamed(profilRoute, arguments: [id]),
+                          onTap: () => Get.toNamed(isiformulirRoute, arguments: [id]),
                           child: Column(
                             children: [
                               Image.asset(
@@ -242,8 +243,8 @@ class _Dashboard extends State<Dashboard> {
                           ),
                         ),
                         InkWell(
-                          // onTap: () 
-                          //=> Get.toNamed(),
+                          onTap: () 
+                          => Get.toNamed(daftarpesertaRoute),
                           child: Column(
                             children: [
                               Image.asset(

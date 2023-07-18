@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pendaftaran/src/routes/constant.dart';
 
 class DaftarAkun extends StatefulWidget {
   const DaftarAkun({super.key});
@@ -12,41 +14,38 @@ class _DaftarAkunState extends State<DaftarAkun> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+         appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.greenAccent, Colors.blueAccent],
+            ),
+          ),
+        ),
+        leading: IconButton(
+          icon: InkWell(
+            onTap: () => Get.toNamed(loginRoute),
+            child: Icon(Icons.arrow_back)),
+          iconSize: 25.0,
+          color: Colors.white,
+          onPressed: () {},
+        ),
+        title: Text(
+          'Daftar Akun',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 50),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 150),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Image.asset(
-                    'assets/LogoPondok.png',
-                    height: 100,
-                    width: 100,
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'Penerimaan Santri Dan',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFf359D9E),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'Siswa baru',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFf359D9E),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SizedBox(height:25),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
@@ -81,7 +80,6 @@ class _DaftarAkunState extends State<DaftarAkun> {
             SizedBox(
               height: 10,
             ),
-                SizedBox(height:25),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
@@ -160,12 +158,14 @@ class _DaftarAkunState extends State<DaftarAkun> {
                 ),
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text(
-                    'Daftar',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400),
+                  child: InkWell(onTap: () => Get.toNamed(dashboardRoute),
+                    child: Text(
+                      'Daftar',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400),
+                    ),
                   ),
                 ),
               ),

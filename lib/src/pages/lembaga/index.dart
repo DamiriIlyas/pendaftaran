@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:pendaftaran/main.dart';
+import 'package:pendaftaran/src/routes/constant.dart';
 import 'package:pendaftaran/src/service/assets.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,31 @@ class _lembagaState extends State<lembaga> {
     return SafeArea(
        child: Scaffold(
         backgroundColor: Color(0xffEDEDED),
+        appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.greenAccent, Colors.blueAccent],
+            ),
+          ),
+        ),
+        leading: IconButton(
+          icon: InkWell(
+            onTap: () => Get.toNamed(dashboardRoute),
+            child: Icon(Icons.arrow_back)),
+          iconSize: 25.0,
+          color: Colors.white,
+          onPressed: () {},
+        ),
+        title: Text(
+          'Profil Lembaga',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -23,7 +50,7 @@ class _lembagaState extends State<lembaga> {
                 children: [
                  Image.asset(
                   oyi,
-                  height: 300,
+                  height: 290,
                   width: MediaQuery.of(context).size.width,
                  ),
                  Center(

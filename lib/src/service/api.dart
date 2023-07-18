@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:pendaftaran/src/config/env.dart';
+import 'package:pendaftaran/src/model/GetFormModel.dart';
 import 'package:pendaftaran/src/model/LoginModel.dart';
 import 'package:pendaftaran/src/model/FormModel.dart';
 import 'package:pendaftaran/src/service/app_exception.dart';
@@ -32,7 +33,7 @@ class ApiService extends GetConnect with BaseController {
     }
   }
 
-  Future<List<FormulirData>?> getForm() async {
+  Future<List<GetData>?> getForm() async {
     final response = await BaseClient()
       .get(BASE_URL, '/get-form', '')
       .catchError((error) {
@@ -44,7 +45,7 @@ class ApiService extends GetConnect with BaseController {
       });
       print(response);
       if (response != null) {
-        var formulir = formModelFromJson(response);
+        var formulir = getformModelFromJson(response);
         return formulir.data;
       }else{
         return null;
@@ -65,6 +66,9 @@ class ApiService extends GetConnect with BaseController {
     String alamatWali,
     String nomorWa,
     String pilihanSekolah,
+    String ijazah,
+    String skhu,
+    String foto,
     String userId
   ) async {
     dynamic body = ({
@@ -81,6 +85,9 @@ class ApiService extends GetConnect with BaseController {
       "alamatWali": alamatWali,
       "nomorWa": nomorWa,
       "pilihanSekolah": pilihanSekolah,
+      "ijazah": ijazah,
+      "skhu": skhu,
+      "foto": foto,
       "userId": userId,
     });
     final response = await BaseClient()
@@ -103,6 +110,44 @@ class ApiService extends GetConnect with BaseController {
   }
   Future<http.StreamedResponse> uploadGambar(filepath) async {
     var url = Uri.parse('$BASE_URL/add-image');
+
+    http.MultipartRequest request = new http.MultipartRequest("POST", url);
+    http.MultipartFile multipartFile =
+        await http.MultipartFile.fromPath('image', filepath);
+
+    request.files.add(multipartFile);
+
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'Image uploaded successfully',
+          margin: EdgeInsets.only(top: 5, left: 10, right: 10));
+    }
+
+    return response;
+  }
+
+  Future<http.StreamedResponse> uploadSkhu(filepath) async {
+    var url = Uri.parse('$BASE_URL/add-skhu');
+
+    http.MultipartRequest request = new http.MultipartRequest("POST", url);
+    http.MultipartFile multipartFile =
+        await http.MultipartFile.fromPath('image', filepath);
+
+    request.files.add(multipartFile);
+
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      Get.snackbar('Success', 'Image uploaded successfully',
+          margin: EdgeInsets.only(top: 5, left: 10, right: 10));
+    }
+
+    return response;
+  }
+
+  Future<http.StreamedResponse> uploadFoto(filepath) async {
+    var url = Uri.parse('$BASE_URL/add-foto');
 
     http.MultipartRequest request = new http.MultipartRequest("POST", url);
     http.MultipartFile multipartFile =

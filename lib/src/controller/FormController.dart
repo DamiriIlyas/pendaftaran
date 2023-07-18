@@ -3,12 +3,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pendaftaran/src/config/env.dart';
 import 'package:pendaftaran/src/model/FormModel.dart';
+import 'package:pendaftaran/src/model/GetFormModel.dart';
 import 'package:pendaftaran/src/service/api.dart';
 
 class FormController extends GetxController{
   var isLoading = true.obs;
   var isloadinPage = false.obs;
-  var formulir = <FormulirData>[].obs;
+  var formulir = <GetData>[].obs;
 
   void getForm() async {
     try {

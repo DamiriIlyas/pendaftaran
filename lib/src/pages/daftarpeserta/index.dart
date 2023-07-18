@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pendaftaran/src/routes/constant.dart';
 
 class DaftarPeserta extends StatefulWidget {
   const DaftarPeserta({super.key});
@@ -31,16 +32,18 @@ class _DaftarPesertaState extends State<DaftarPeserta> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 10, top: 20),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 20,
+                          child: InkWell(onTap: () => Get.toNamed(dashboardRoute),
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 20,
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 20, left: 10),
                           child: Text(
-                            'Notifikasi',
+                            'Daftar Peserta',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -52,7 +55,7 @@ class _DaftarPesertaState extends State<DaftarPeserta> {
                   ),
                   Container(
                             child: Padding( 
-                          padding: EdgeInsets.only(top: 10, right: 5, bottom: 30, left: 20),
+                          padding: EdgeInsets.only(top: 70, right: 5, bottom: 30, left: 20),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -134,6 +137,164 @@ class _DaftarPesertaState extends State<DaftarPeserta> {
                                           ),  
                                         ),
                                       ),
+                                      Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(horizontal: 3),
+                                                child: Text(
+                                                  'MA Babul Futuh',
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.blueAccent,
+                                                      fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                            ),
+                                    ],
+                                        
+                                      ),
+                                        ),
+                                         Padding(
+                                        padding: EdgeInsets.only(top: 5, right: 5),
+                                        child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.symmetric(horizontal: 3),
+                                          child: Text(
+                                            'Muhammad Fahmi Aziz',
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w400),
+                                          ),  
+                                        ),
+                                      ),
+                                      Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(horizontal: 3),
+                                                child: Text(
+                                                  'MA Babul Futuh',
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.blueAccent,
+                                                      fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                            ),
+                                    ],
+                                        
+                                      ),
+                                        ),
+                                         Padding(
+                                        padding: EdgeInsets.only(top: 5, right: 5),
+                                        child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.symmetric(horizontal: 3),
+                                          child: Text(
+                                            'Muhammad Fahmi Aziz',
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w400),
+                                          ),  
+                                        ),
+                                      ),
+                                      Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(horizontal: 3),
+                                                child: Text(
+                                                  'MA Babul Futuh',
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.blueAccent,
+                                                      fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                            ),
+                                    ],
+                                        
+                                      ),
+                                        ),
+                                         Padding(
+                                        padding: EdgeInsets.only(top: 5, right: 5),
+                                        child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.symmetric(horizontal: 3),
+                                          child: Text(
+                                            'Muhammad Fahmi Aziz',
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w400),
+                                          ),  
+                                        ),
+                                      ),
+                                      Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(horizontal: 3),
+                                                child: Text(
+                                                  'MA Babul Futuh',
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.blueAccent,
+                                                      fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                            ),
+                                    ],
+                                        
+                                      ),
+                                        ),
+                                         Padding(
+                                        padding: EdgeInsets.only(top: 5, right: 5),
+                                        child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.symmetric(horizontal: 3),
+                                          child: Text(
+                                            'Muhammad Fahmi Aziz',
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w400),
+                                          ),  
+                                        ),
+                                      ),
+                                      Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(horizontal: 3),
+                                                child: Text(
+                                                  'MA Babul Futuh',
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.blueAccent,
+                                                      fontWeight: FontWeight.w400),
+                                                ),
+                                              ),
+                                            ),
                                     ],
                                         
                                       ),
