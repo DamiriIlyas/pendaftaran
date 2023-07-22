@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           color: const Color(0xFF359D9E)
         )
       ),
-      initialRoute: loginRoute,
+      initialRoute: awalRoute,
       getPages: routes,
     );
   }

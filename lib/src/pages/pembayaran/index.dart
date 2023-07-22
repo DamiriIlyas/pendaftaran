@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class pembayaran extends StatefulWidget {
   const pembayaran({super.key});
@@ -15,7 +16,7 @@ class _pembayaranState extends State<pembayaran> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-      backgroundColor: Color(0xffEDEDED),
+        backgroundColor: Color(0xffEDEDED),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -24,11 +25,12 @@ class _pembayaranState extends State<pembayaran> {
                   Container(
                     height: 270,
                     width: 500,
-                    decoration: BoxDecoration( gradient: LinearGradient(
-                            colors: [
-                  Colors.greenAccent, Colors.blueAccent],
-                          ),),
-                    child: Row(	
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.greenAccent, Colors.blueAccent],
+                      ),
+                    ),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
@@ -40,7 +42,7 @@ class _pembayaranState extends State<pembayaran> {
                               color: Colors.white,
                               size: 25,
                             ),
-                          ),	
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 20, left: 10),
@@ -56,10 +58,11 @@ class _pembayaranState extends State<pembayaran> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20, top: 60, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 20, top: 60, bottom: 10),
                     child: Container(
-                      height: 800,
-                      width: 320,
+                      height: 820,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -70,46 +73,341 @@ class _pembayaranState extends State<pembayaran> {
                           ],
                           borderRadius: BorderRadius.circular(10)),
                       child: Container(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 20, bottom: 30, left: 20, right: 20),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: 20, bottom: 30, left: 20, right: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Biaya Pondok Pesantren Babul\nFutuh 2023-2024',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Gelombang 1',
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(height: 7),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Rincian',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Putra',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Putri',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Biaya pendidikan sekolah',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Rp. 150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Rp. 150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Biaya pendidikan pondok  ',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Biaya pendidikan pondok  ',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Biaya pendidikan pondok  ',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.150.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Padding(
+                                padding: EdgeInsets.only(left: 5, right: 5),
+                                child: Divider(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        'Total',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.900.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3),
+                                      child: Text(
+                                        ' Rp.950.000',
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: 20, bottom: 30, left: 3, right: 3),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Biaya Pondok Pesantren Babul\nFutuh 2023-2024',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                     SizedBox(height: 10),
-                                     Text(
-                                      'Gelombang 1',
+                                      'Gelombang 2',
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w700),
                                     ),
                                     SizedBox(height: 7),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Rincian',
                                               style: TextStyle(
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.bold),
-                                            ),  
+                                            ),
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.center,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Putra',
                                               style: TextStyle(
@@ -121,8 +419,8 @@ class _pembayaranState extends State<pembayaran> {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Putri',
                                               style: TextStyle(
@@ -135,26 +433,27 @@ class _pembayaranState extends State<pembayaran> {
                                     ),
                                     SizedBox(height: 5),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Biaya pendidikan sekolah',
                                               style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w400),
-                                            ),  
+                                            ),
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Rp. 150.000',
                                               style: TextStyle(
@@ -166,8 +465,8 @@ class _pembayaranState extends State<pembayaran> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Rp. 150.000',
                                               style: TextStyle(
@@ -180,26 +479,27 @@ class _pembayaranState extends State<pembayaran> {
                                     ),
                                     SizedBox(height: 5),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Biaya pendidikan pondok  ',
                                               style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w400),
-                                            ),  
+                                            ),
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.150.000',
                                               style: TextStyle(
@@ -211,8 +511,8 @@ class _pembayaranState extends State<pembayaran> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.150.000',
                                               style: TextStyle(
@@ -225,26 +525,27 @@ class _pembayaranState extends State<pembayaran> {
                                     ),
                                     SizedBox(height: 5),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Biaya pendidikan pondok  ',
                                               style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w400),
-                                            ),  
+                                            ),
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.150.000',
                                               style: TextStyle(
@@ -256,8 +557,8 @@ class _pembayaranState extends State<pembayaran> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.150.000',
                                               style: TextStyle(
@@ -270,26 +571,27 @@ class _pembayaranState extends State<pembayaran> {
                                     ),
                                     SizedBox(height: 5),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Biaya pendidikan pondok  ',
                                               style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w400),
-                                            ),  
+                                            ),
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.150.000',
                                               style: TextStyle(
@@ -301,8 +603,8 @@ class _pembayaranState extends State<pembayaran> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.150.000',
                                               style: TextStyle(
@@ -315,33 +617,35 @@ class _pembayaranState extends State<pembayaran> {
                                     ),
                                     SizedBox(height: 5),
                                     Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: Divider(
-                                      color: Colors.grey,
+                                      padding:
+                                          EdgeInsets.only(left: 5, right: 5),
+                                      child: Divider(
+                                        color: Colors.grey,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(height: 5),
+                                    SizedBox(height: 5),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               'Total',
                                               style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w400),
-                                            ),  
+                                            ),
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.900.000',
                                               style: TextStyle(
@@ -353,8 +657,8 @@ class _pembayaranState extends State<pembayaran> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 3),
                                             child: Text(
                                               ' Rp.950.000',
                                               style: TextStyle(
@@ -366,438 +670,136 @@ class _pembayaranState extends State<pembayaran> {
                                       ],
                                     ),
                                     Padding(
-                            padding: EdgeInsets.only(top: 20, bottom: 30, left: 3, right: 3),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                     Text(
-                                      'Gelombang 2',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                     SizedBox(height: 7),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Rincian',
-                                              style: TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold),
-                                            ),  
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Putra',
-                                              style: TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold),
+                                      padding: EdgeInsets.only(
+                                          top: 20,
+                                          bottom: 30,
+                                          left: 3,
+                                          right: 3),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Syarat Pembayaran',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
                                             ),
                                           ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Putri',
-                                              style: TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold),
+                                          Text(
+                                            '- DP pembayaran keseluruhan 50%',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Biaya pendidikan sekolah',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),  
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Rp. 150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            '- Pembayaran DP tidak bisa kembali jika mengundurkan diri',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Rp. 150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            '- Tidak termasuk biaya pendaftaran pendidikan  formal',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Biaya pendidikan pondok  ',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),  
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            '- Pembayaran dapat melalui Aplikasi Ini',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            'Contact Person',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Biaya pendidikan pondok  ',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),  
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            'Putra 0858-5932-3876\n',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            'Putri 0857-9036-1160',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Biaya pendidikan pondok  ',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),  
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
+                                          Text(
+                                            'Wajib Bermukim Di Pondok',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
                                             ),
                                           ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.150.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: Divider(
-                                      color: Colors.grey,
-                                    ),
-                                    
-                                  ),
-                                  SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              'Total',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),  
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.900.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(horizontal: 3),
-                                            child: Text(
-                                              ' Rp.950.000',
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                            padding: EdgeInsets.only(top: 20, bottom: 30, left: 3, right: 3),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                     Text(
-                                      'Syarat Pembayaran',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
-                                          ),
-                                    ),
-                                    Text(
-                                      '- DP pembayaran keseluruhan 50%',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      '- Pembayaran DP tidak bisa kembali jika mengundurkan diri',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      '- Tidak termasuk biaya pendaftaran pendidikan  formal',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      '- Pembayaran dapat melalui Aplikasi Ini',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Contact Person',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Putra 0858-5932-3876\n',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Putri 0857-9036-1160',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          ),
-                                    ),
-                                Text(
-                                      'Wajib Bermukim Di Pondok',
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
-                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
-                                    ),
-                                  ],
-                                ),
-                                ),
-                                Center(
-                child: InkWell(
-                  onTap: () => Get.toNamed(dashboardRoute),
-                  child: Container(
-                    height: 40,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        
-                        colors: [Colors.greenAccent, Colors.blueAccent],),
-                      borderRadius: BorderRadius.circular(30),
-                       boxShadow: [
-                        BoxShadow(
-                            color: Colors.black87,
-                            blurRadius: 2,
-                            offset: const Offset(0, 1),
-                            ),
-                       ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Bayar Sekarang',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10,),
-              Center(
-                child: InkWell(
-                  onTap: () => Get.toNamed(dashboardRoute),
-                  child: Container(
-                    height: 40,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        
-                        colors: [Colors.greenAccent, Colors.blueAccent],),
-                      borderRadius: BorderRadius.circular(30),
-                       boxShadow: [
-                        BoxShadow(
-                            color: Colors.black87,
-                            blurRadius: 2,
-                            offset: const Offset(0, 1),
-                            ),
-                       ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Bayar Nyicil',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-                                  ],
-                                  
                               ),
+                              
+                              SizedBox(
+                                height: 10,
+                              ),
+                              InkWell(
+                                // onTap: () => Get.toNamed(totalpembayaranRoute),
+                                onTap: () async{
+                                  if (!await launchUrl(
+      Uri.parse('https://app.sandbox.midtrans.com/snap/v3/redirection/d0b3cc98-3126-4cf0-91d6-7e17a61d303a'),
+       mode: LaunchMode.inAppWebView,
+    )) {
+      throw Exception('Could not launch https://app.sandbox.midtrans.com/snap/v3/redirection/d0b3cc98-3126-4cf0-91d6-7e17a61d303a');
+    }
+                                },
+                                child: Center(
+                                  child: Container(
+                                    height: 40,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.greenAccent,
+                                          Colors.blueAccent
+                                        ],
+                                      ),
+                                      borderRadius: BorderRadius.circular(30),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black87,
+                                          blurRadius: 2,
+                                          offset: const Offset(0, 1),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'Bayar Sekarang',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                            
+                          ),
+                        ),
                       ),
                       
                     ),
-                      ),
+                    
                   ),
                 ],
-            ),
-              
+              ),
             ],
           ),
         ),

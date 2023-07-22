@@ -13,16 +13,18 @@ import 'package:pendaftaran/src/pages/lembaga/index.dart';
 import 'package:pendaftaran/src/pages/profil/index.dart';
 import 'package:pendaftaran/src/pages/daftarpeserta/index.dart';
 import 'package:pendaftaran/src/pages/daftarakun/index.dart';
+import 'package:pendaftaran/src/pages/totalpembayaran/index.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 
 final List<GetPage<dynamic>>? routes = [
-  GetPage(name: awalRoute, page: () => awal()),
+  GetPage(name: awalRoute, page: () => Root()),
   GetPage(name: loginRoute, page: () => LoginPage()),
   GetPage(name: isiformulirRoute, page: () => IsiFormulir()),
   GetPage(name: kwitansiRoute, page: () => Kwitansi()),
   GetPage(name: metodepembayaranRoute, page: () => MetodePembayaran()),
   GetPage(name: notifikasiRoute, page: () => Notifikasi()),
   GetPage(name: pembayaranRoute, page: () => pembayaran()),
+  GetPage(name: totalpembayaranRoute, page: () => TotalPembayaran()),
   GetPage(name: pengumumanRoute, page: () => pengumuman()),
   GetPage(name: lembagaRoute, page: () => lembaga()),
   GetPage(name: persyaratanRoute, page: () => persyaratan()),

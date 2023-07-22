@@ -8,6 +8,7 @@ import 'package:pendaftaran/src/controller/UploadFotoController.dart';
 import 'package:pendaftaran/src/controller/UploadSkhuController.dart';
 import 'package:pendaftaran/src/routes/constant.dart';
 import 'package:pendaftaran/src/storage/preference.dart';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class IsiFormulir extends StatefulWidget {
@@ -33,7 +34,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
   TextEditingController pilihanSekolah = TextEditingController();
   AddFormController addForm = Get.put(AddFormController());
 
-  UploadController upload = Get.put(UploadController());
+  final upload = Get.put(UploadController());
   UploadFotoController uploadFoto = Get.put(UploadFotoController());
   UploadSkhuController uploadSkhu = Get.put(UploadSkhuController());
   String? selectedJenisKelamin;
@@ -64,7 +65,7 @@ class _IsiFormulirState extends State<IsiFormulir> {
       backgroundColor: Color(0xffEDEDED),
         body: SingleChildScrollView(
           child: Column(
-            children: <Widget>[
+            children: [
               Stack(
                 children: [
                   Container(
@@ -74,9 +75,35 @@ class _IsiFormulirState extends State<IsiFormulir> {
                             colors: [
                   Colors.greenAccent, Colors.blueAccent],
                           ),),
+                    child: Row(	
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 20),
+                          child: InkWell(
+                            onTap: () => Get.toNamed(dashboardRoute),
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 25,
+                            ),
+                          ),	
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, left: 10),
+                          child: Text(
+                            'Formulir Pendaftaran',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
+                    padding: const EdgeInsets.only(left: 20, right: 20, top: 60, bottom: 20),
                     child: Container(
                       height: 1450,
                       width: 320,
@@ -175,28 +202,36 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           
                                         ),
                                        ),
-                                  SizedBox(height: 3),
-                                      DropdownButtonFormField<String>(
-                                        value: selectedJenisKelamin,
-                                        onChanged: (newValue) {
-                                          setState(() {
-                                            selectedJenisKelamin = newValue;
-                                          });
-                                        },
-                                        items: [
-                                          DropdownMenuItem(
-                                            value: "Laki-laki",
-                                            child: Text("Laki-laki"),
-                                          ),
-                                          DropdownMenuItem(
-                                            value: "Perempuan",
-                                            child: Text("Perempuan"),
-                                          ),
-                                        ],
+                                       SizedBox(height: 3),
+                                  TextField(
+                                    controller: jenisKelamin,
+                                        style: TextStyle(color: Colors.black),
                                         decoration: InputDecoration(
                                           hintText: "Jenis Kelamin",
                                         ),
-                                      ),
+                                       ),
+                                  SizedBox(height: 3),
+                                      // DropdownButtonFormField<String>(
+                                      //   value: selectedJenisKelamin,
+                                      //   onChanged: (newValue) {
+                                      //     setState(() {
+                                      //       selectedJenisKelamin = newValue;
+                                      //     });
+                                      //   },
+                                      //   items: [
+                                      //     DropdownMenuItem(
+                                      //       value: "Laki-laki",
+                                      //       child: Text("Laki-laki"),
+                                      //     ),
+                                      //     DropdownMenuItem(
+                                      //       value: "Perempuan",
+                                      //       child: Text("Perempuan"),
+                                      //     ),
+                                      //   ],
+                                      //   decoration: InputDecoration(
+                                      //     hintText: "Jenis Kelamin",
+                                      //   ),
+                                      // ),
                                          SizedBox(height: 3),
                                          TextField(
                                           controller: ttl,
@@ -232,28 +267,37 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           
                                         ),
                                        ),
+                                       
                                        SizedBox(height: 3),
-                                      DropdownButtonFormField<String>(
-                                        value: selectedPilihanSekolah,
-                                        onChanged: (newValue) {
-                                          setState(() {
-                                            selectedPilihanSekolah = newValue;
-                                          });
-                                        },
-                                        items: [
-                                          DropdownMenuItem(
-                                            value: "MTS Babul Futuh",
-                                            child: Text("MTS Babul Futuh"),
-                                          ),
-                                          DropdownMenuItem(
-                                            value: "MA Babul Futuh",
-                                            child: Text("MA Babul Futuh"),
-                                          ),
-                                        ],
+                                  TextField(
+                                    controller: pilihanSekolah,
+                                        style: TextStyle(color: Colors.black),
                                         decoration: InputDecoration(
-                                          hintText: "Tujuan Sekolah",
+                                          hintText: "Pilihan Sekolah",
                                         ),
-                                      ),
+                                       ),
+                                       SizedBox(height: 3),
+                                      // DropdownButtonFormField<String>(
+                                      //   value: selectedPilihanSekolah,
+                                      //   onChanged: (newValue) {
+                                      //     setState(() {
+                                      //       selectedPilihanSekolah = newValue;
+                                      //     });
+                                      //   },
+                                      //   items: [
+                                      //     DropdownMenuItem(
+                                      //       value: "MTS Babul Futuh",
+                                      //       child: Text("MTS Babul Futuh"),
+                                      //     ),
+                                      //     DropdownMenuItem(
+                                      //       value: "MA Babul Futuh",
+                                      //       child: Text("MA Babul Futuh"),
+                                      //     ),
+                                      //   ],
+                                      //   decoration: InputDecoration(
+                                      //     hintText: "Tujuan Sekolah",
+                                      //   ),
+                                      // ),
                                    SizedBox(height: 10),
                                         Center(
                                         child: Container(
@@ -318,6 +362,14 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           
                                         ),
                                        ),
+                                       SizedBox(height: 10),
+                                                     Text(
+                                                      '*Wajib Bermukim Di Pondok',
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Color(0xFF359D9E),
+                                                          fontWeight: FontWeight.w700),
+                                                    ),
                                       SizedBox(height: 10),
                                         Center(
                                         child: Container(
@@ -348,9 +400,10 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                           ),
 
                                           InkWell(
-                                            onTap: () async {
+                                            onTap: () async{ 
                                               upload.imageURL.value = await upload.uploadImage(ImageSource.gallery);
                                             },
+
                                             child: Obx(() {
                                               final imageUrl = upload.imageURL.value;
 
@@ -387,133 +440,12 @@ class _IsiFormulirState extends State<IsiFormulir> {
                                               }
                                             }),
                                           ),
-                                          SizedBox(height: 12,),
-                                          Center(
-                                            child: Text(
-                                              'Upload Skhu'
-                                            ),
-                                          ),
-                                          InkWell(
-                                            onTap: () async {
-                                              uploadSkhu.skhuURL.value = await uploadSkhu.uploadSkhu(ImageSource.gallery);
-                                            },
-                                            child: Obx(() {
-                                              final imageSkhu = uploadSkhu.skhuURL.value;
-
-                                              if(imageSkhu == '') {
-                                                return Center(
-                                                  child: Container(
-                                                    width: 80,
-                                                    height: 80,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(color: Colors.black)
-                                                    ),
-                                                    child: Icon(
-                                                      Icons.upload_file,
-                                                      color: Colors.black
-                                                    ),
-                                                  ),
-                                                );
-                                              }else{
-                                                return Center(
-                                                  child: Container(
-                                                    width: 80,
-                                                    height: 80,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(color: Colors.black),
-                                                      image: DecorationImage(
-                                                        image: NetworkImage(imageSkhu),fit: BoxFit.cover
-                                                      )
-                                                    ),
-                                                    
-                                                  ),
-                                                );
-                                              }
-                                            }),
-                                          ),
-                                          SizedBox(height: 12,),
-                                          Center(
-                                            child: Text(
-                                              'Upload Foto'
-                                            ),
-                                          ),
-                                          InkWell(
-                                            onTap: () async {
-                                              uploadFoto.fotoURL.value = await uploadFoto.uploadFoto(ImageSource.gallery);
-                                            },
-                                            child: Obx(() {
-                                              final imageFoto = uploadFoto.fotoURL.value;
-
-                                              if(imageFoto == '') {
-                                                return Center(
-                                                  child: Container(
-                                                    width: 80,
-                                                    height: 80,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(color: Colors.black)
-                                                    ),
-                                                    child: Icon(
-                                                      Icons.upload_file,
-                                                      color: Colors.black
-                                                    ),
-                                                  ),
-                                                );
-                                              }else{
-                                                return Center(
-                                                  child: Container(
-                                                    width: 80,
-                                                    height: 80,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(color: Colors.black),
-                                                      image: DecorationImage(
-                                                        image: NetworkImage(imageFoto),fit: BoxFit.cover
-                                                      )
-                                                    ),
-                                                    
-                                                  ),
-                                                );
-                                              }
-                                            }),
-                                          ),
-                                     SizedBox(height: 20),
-                                                     Text(
-                                                      '*Wajib Bermukim Di Pondok',
-                                                      style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Color(0xFF359D9E),
-                                                          fontWeight: FontWeight.w700),
-                                                    ),
+                                     
                                   SizedBox(height: 50),
                                   Center(
                 child: InkWell(
                     onTap: () async {
-                      userId;
-                      getId();
-                      if (namaLengkap.text.isEmpty ||
-                          nisn.text.isEmpty ||
-                          jenisKelamin.text.isEmpty ||
-                          ttl.text.isEmpty ||
-                          alamat.text.isEmpty ||
-                          asalSekolah.text.isEmpty ||
-                          tahunLulus.text.isEmpty ||
-                          namaWali.text.isEmpty ||
-                          nik.text.isEmpty ||
-                          pekerjaanWali.text.isEmpty ||
-                          alamatWali.text.isEmpty ||
-                          nomorWa.text.isEmpty ||
-                          pilihanSekolah.text.isEmpty
-                          ) {
-                        userId;
-                        setState(() {
-                          validate = true;
-                        });
-                      } else {
-                        await addForm.addFormulir(namaLengkap.text, nisn.text, jenisKelamin.text, ttl.text, alamat.text, asalSekolah.text, tahunLulus.text, namaWali.text, nik.text, pekerjaanWali.text, alamatWali.text, nomorWa.text, pilihanSekolah.text, upload.imageURL.toString(),uploadSkhu.skhuURL.toString(),uploadFoto.fotoURL.toString(),getId.toString());
-                      }
+                        await addForm.addFormulir(namaLengkap.text, nisn.text, jenisKelamin.text, ttl.text, alamat.text, asalSekolah.text, tahunLulus.text, namaWali.text, nik.text, pekerjaanWali.text, alamatWali.text, nomorWa.text, pilihanSekolah.text, upload.imageURL.toString(),getId.toString());
                     },
                   child: Container(
                     height: 40,

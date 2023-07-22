@@ -26,18 +26,9 @@ class _LoginPage extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-       appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.greenAccent, Colors.blueAccent],
-              ),
-            ),
-          ),
-        ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 50),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 80),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

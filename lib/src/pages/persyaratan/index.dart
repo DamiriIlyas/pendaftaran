@@ -60,8 +60,8 @@ class _persyaratanState extends State<persyaratan> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20, top: 60, bottom: 20),
                     child: Container(
-                      height: 650,
-                      width: 320,
+                      height: 800,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [

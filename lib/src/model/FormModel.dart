@@ -9,14 +9,14 @@ String formModelToJson(FormModel data) =>
 class FormModel {
   int? code;
   String? message;
-  FormulirData? data;
+  Data? data;
 
   FormModel({this.code, this.message, this.data});
 
   FormModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? new FormulirData.fromJson(json['data']) : null;
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -30,7 +30,7 @@ class FormModel {
   }
 }
 
-class FormulirData {
+class Data {
   String? namaLengkap;
   String? nisn;
   String? jenisKelamin;
@@ -45,14 +45,12 @@ class FormulirData {
   String? nomorWa;
   String? pilihanSekolah;
   String? ijazah;
-  String? skhu;
-  String? foto;
   String? userId;
   String? updatedAt;
   String? createdAt;
   int? id;
 
-  FormulirData(
+  Data(
       {this.namaLengkap,
       this.nisn,
       this.jenisKelamin,
@@ -67,14 +65,12 @@ class FormulirData {
       this.nomorWa,
       this.pilihanSekolah,
       this.ijazah,
-      this.skhu,
-      this.foto,
       this.userId,
       this.updatedAt,
       this.createdAt,
       this.id});
 
-  FormulirData.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     namaLengkap = json['nama_lengkap'];
     nisn = json['nisn'];
     jenisKelamin = json['jenis_kelamin'];
@@ -89,8 +85,6 @@ class FormulirData {
     nomorWa = json['nomor_wa'];
     pilihanSekolah = json['pilihan_sekolah'];
     ijazah = json['ijazah'];
-    skhu = json['skhu'];
-    foto = json['foto'];
     userId = json['user_id'];
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];
@@ -113,8 +107,6 @@ class FormulirData {
     data['nomor_wa'] = this.nomorWa;
     data['pilihan_sekolah'] = this.pilihanSekolah;
     data['ijazah'] = this.ijazah;
-    data['skhu'] = this.skhu;
-    data['foto'] = this.foto;
     data['user_id'] = this.userId;
     data['updated_at'] = this.updatedAt;
     data['created_at'] = this.createdAt;

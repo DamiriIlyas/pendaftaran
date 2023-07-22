@@ -15,7 +15,7 @@ class TotalPembayaran extends StatefulWidget {
 class _TotalPembayaranState extends State<TotalPembayaran> {
   @override
   Widget build(BuildContext context) {
-return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -26,8 +26,8 @@ return Scaffold(
         ),
         leading: IconButton(
           icon: InkWell(
-            onTap: () => Get.toNamed(pembayaranRoute),
-            child: Icon(Icons.arrow_back)),
+              onTap: () => Get.toNamed(pembayaranRoute),
+              child: Icon(Icons.arrow_back)),
           iconSize: 25.0,
           color: Colors.white,
           onPressed: () {},
@@ -47,9 +47,14 @@ return Scaffold(
           height: 500,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black87,
+                                blurRadius: 2,
+                                offset: const Offset(0, 1)),
+                          ],
+                          borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.only(top: 15, left: 20),
             child: Column(
@@ -57,26 +62,17 @@ return Scaffold(
               children: [
                 Text(
                   'Biaya Awal Masuk',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400
-                  ),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                 ),
                 SizedBox(height: 15),
                 Text(
                   'Rp 750.000',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 15),
                 Text(
                   'Pilih Metode Pembayaran',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700
-                  ),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
                 SizedBox(height: 20),
                 Text(
@@ -107,10 +103,9 @@ return Scaffold(
                 Text(
                   'Transfer Antar Bank',
                   style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFF359D9E),
-                    fontWeight: FontWeight.w700
-                  ),
+                      fontSize: 20,
+                      color: Color(0xFF359D9E),
+                      fontWeight: FontWeight.w700),
                 ),
                 // SizedBox(height: 10),
                 Row(
@@ -144,10 +139,9 @@ return Scaffold(
                 Text(
                   'Minimarket',
                   style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFF359D9E),
-                    fontWeight: FontWeight.w700
-                  ),
+                      fontSize: 20,
+                      color: Color(0xFF359D9E),
+                      fontWeight: FontWeight.w700),
                 ),
                 // SizedBox(height: 10),
                 Row(
@@ -169,10 +163,9 @@ return Scaffold(
                 Text(
                   'Kartu Debit/Kredit',
                   style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xFF359D9E),
-                    fontWeight: FontWeight.w700
-                  ),
+                      fontSize: 20,
+                      color: Color(0xFF359D9E),
+                      fontWeight: FontWeight.w700),
                 ),
                 // SizedBox(height: 10),
                 Row(
@@ -190,14 +183,14 @@ return Scaffold(
                       a27,
                       height: 50,
                       width: 50,
-                    ), 
+                    ),
                   ],
                 )
               ],
             ),
           ),
         ),
-      )
+      ),
     );
   }
 }

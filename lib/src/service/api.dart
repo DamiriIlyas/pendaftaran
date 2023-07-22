@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:pendaftaran/src/config/env.dart';
 import 'package:pendaftaran/src/model/GetFormModel.dart';
 import 'package:pendaftaran/src/model/LoginModel.dart';
 import 'package:pendaftaran/src/model/FormModel.dart';
+import 'package:pendaftaran/src/model/UploadModel.dart';
 import 'package:pendaftaran/src/service/app_exception.dart';
 import 'package:pendaftaran/src/service/base_client.dart';
 import 'package:http/http.dart' as http;
@@ -67,27 +69,23 @@ class ApiService extends GetConnect with BaseController {
     String nomorWa,
     String pilihanSekolah,
     String ijazah,
-    String skhu,
-    String foto,
     String userId
   ) async {
     dynamic body = ({
-      "namaLengkap": namaLengkap,
+      "nama_lengkap": namaLengkap,
       "nisn": nisn,
-      "jenisKelamin": jenisKelamin,
+      "jenis_kelamin": jenisKelamin,
       "ttl": ttl,
       "alamat": alamat,
-      "asalSekolah": asalSekolah,
-      "tahunLulus": tahunLulus,
-      "namaWali": namaWali,
+      "asal_sekolah": asalSekolah,
+      "tahun_lulus": tahunLulus,
+      "nama_wali": namaWali,
       "nik": nik,
-      "pekerjaanWali": pekerjaanWali,
-      "alamatWali": alamatWali,
-      "nomorWa": nomorWa,
-      "pilihanSekolah": pilihanSekolah,
+      "pekerjaan_wali": pekerjaanWali,
+      "alamat_wali": alamatWali,
+      "nomor_wa": nomorWa,
+      "pilihan_sekolah": pilihanSekolah,
       "ijazah": ijazah,
-      "skhu": skhu,
-      "foto": foto,
       "userId": userId,
     });
     final response = await BaseClient()
@@ -113,7 +111,7 @@ class ApiService extends GetConnect with BaseController {
 
     http.MultipartRequest request = new http.MultipartRequest("POST", url);
     http.MultipartFile multipartFile =
-        await http.MultipartFile.fromPath('image', filepath);
+    await http.MultipartFile.fromPath('image', filepath);
 
     request.files.add(multipartFile);
 
@@ -123,7 +121,6 @@ class ApiService extends GetConnect with BaseController {
       Get.snackbar('Success', 'Image uploaded successfully',
           margin: EdgeInsets.only(top: 5, left: 10, right: 10));
     }
-
     return response;
   }
 

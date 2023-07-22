@@ -34,3 +34,4 @@ const String a55 = 'assets/a55.png';
 const String oyi = 'assets/oyi.png';
 const String oye = 'assets/oye.jpg';
 const String oya = 'assets/oya.png';
+const String user = 'assets/user.png';

@@ -48,8 +48,7 @@ class _Dashboard extends State<Dashboard> {
                     height: 230,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [
-                Color(0xFF359D9E), const Color.fromARGB(255, 55, 122, 238)],
+              colors: [Colors.greenAccent, Colors.blueAccent],
                         ),
                         borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(40),
@@ -65,8 +64,8 @@ class _Dashboard extends State<Dashboard> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                       Image.asset(
-                                        LogoPondok, height: 70,
-                                width: 70,),
+                                        LogoPondok, height: 60,
+                                width: 60,),
                                       InkWell(onTap: () => Get.toNamed(notifikasiRoute),
                                         child: Icon(
                                             Icons.notifications_active,

@@ -89,7 +89,7 @@ class _lembagaState extends State<lembaga> {
                                           ),
                                     ),
                                      Text(
-                                      'Pndok Pesantren',
+                                      'Pondok Pesantren',
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w700),
