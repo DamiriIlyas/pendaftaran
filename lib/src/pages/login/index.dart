@@ -28,202 +28,225 @@ class _LoginPage extends State<LoginPage> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-              padding: EdgeInsets.only(left: 30, right: 30, top: 80),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/LogoPondok.png',
-                      height: 100,
-                      width: 100,
+            padding: EdgeInsets.only(left: 30, right: 30, top: 80),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Image.asset(
+                    'assets/LogoPondok.png',
+                    height: 100,
+                    width: 100,
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Penerimaan Santri Dan',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color(0xFf359D9E),
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Center(
+                ),
+                Center(
+                  child: Text(
+                    'Siswa baru',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color(0xFf359D9E),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 25),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
                     child: Text(
-                      'Penerimaan Santri Dan',
+                      'Email',
                       style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFf359D9E),
-                        fontWeight: FontWeight.bold,
-                      ),
+                          color: Color(0xFf359D9E),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
-                  Center(
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color(0xffFFD9D9D9)),
+                    child: TextField(
+                        controller: email,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Masukkan Email Anda',
+                          hintStyle: TextStyle(color: Color(0xFf359D9E)),
+                          filled: true,
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
                     child: Text(
-                      'Siswa baru',
+                      'Password',
                       style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFf359D9E),
-                        fontWeight: FontWeight.bold,
-                      ),
+                          color: Color(0xFf359D9E),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
-                  SizedBox(height: 25),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      child: Text(
-                        'Email',
-                        style: TextStyle(
-                            color: Color(0xFf359D9E),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20),
-                    child: Container(
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Container(
                       height: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: Color(0xffFFD9D9D9)),
                       child: TextField(
-                          controller: email,
-                          decoration: InputDecoration(
+                        obscureText: _isHidden,
+                        controller: password,
+                        decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Masukkan Email Anda',
+                            hintText: 'Masukkan Password',
                             hintStyle: TextStyle(color: Color(0xFf359D9E)),
-                            filled: true,
-                          )),
+                            filled: true),
+                      )),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: Text(
+                      'Lupa Password?',
+                      style: TextStyle(
+                          color: Color(0xFf359D9E),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      child: Text(
-                        'Password',
-                        style: TextStyle(
-                            color: Color(0xFf359D9E),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                InkWell(
+                  onTap: () async {
+                    if (email.text.isEmpty || password.text.isEmpty) {
+                      setState(() {
+                        validate = true;
+                      });
+                    } else {
+                      await loginCon.loginUser(email.text, password.text);
+                    }
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 17, right: 17),
                     child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color(0xffFFD9D9D9)),
-                        child: TextField(
-                          obscureText: _isHidden,
-                          controller: password,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Masukkan Password',
-                              hintStyle: TextStyle(color: Color(0xFf359D9E)),
-                              filled: true),
-                        )),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      child: Text(
-                        'Lupa Password?',
-                        style: TextStyle(
-                            color: Color(0xFf359D9E),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      if (email.text.isEmpty || password.text.isEmpty) {
-                        setState(() {
-                          validate = true;
-                        });
-                      } else {
-                        await loginCon.loginUser(email.text, password.text);
-                      }
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 17, right: 17),
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Color(0xFf359D9E),
+                      height: 40,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.greenAccent, Colors.blueAccent],
                         ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Masuk',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w400),
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black87,
+                            blurRadius: 2,
+                            offset: const Offset(0, 1),
                           ),
+                        ],
+                      ),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Masuk',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      child: Text(
-                        'Belum punya akun?',
-                        style: TextStyle(
-                            color: Color(0xFf359D9E),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  InkWell(
-                    onTap: () => Get.toNamed(daftarakunRoute),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 17, right: 17),
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: Text(
+                      'Belum punya akun?',
+                      style: TextStyle(
                           color: Color(0xFf359D9E),
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Daftar Akun',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w400),
-                          ),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                InkWell(
+                  onTap: () => Get.toNamed(daftarakunRoute),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 17, right: 17),
+                    child: Container(
+                                    height: 40,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.greenAccent,
+                                          Colors.blueAccent
+                                        ],
+                                      ),
+                                      borderRadius: BorderRadius.circular(30),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black87,
+                                          blurRadius: 2,
+                                          offset: const Offset(0, 1),
+                                        ),
+                                      ],
+                                    ),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Daftar Akun',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+              ],
             ),
+          ),
         ),
       ),
     );
