@@ -13,9 +13,9 @@ class Notifikasi extends StatefulWidget {
 class _NotifikasiState extends State<Notifikasi> {
   @override
   Widget build(BuildContext context) {
-   return SafeArea(
-     child: Scaffold(
-      backgroundColor: Color(0xffEDEDED),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xffEDEDED),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -24,10 +24,11 @@ class _NotifikasiState extends State<Notifikasi> {
                   Container(
                     height: 55,
                     width: 500,
-                    decoration: BoxDecoration( gradient: LinearGradient(
-                            colors: [
-                  Colors.greenAccent, Colors.blueAccent],
-                          ),),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.greenAccent, Colors.blueAccent],
+                      ),
+                    ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -69,160 +70,161 @@ class _NotifikasiState extends State<Notifikasi> {
                                 offset: const Offset(0, 1)),
                           ],
                           borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10, top: 20, bottom: 40),
-                                child: Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage('assets/LogoPondok.png'))),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20, top: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10, top: 20, bottom: 40),
+                            child: Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage('assets/LogoPondok.png'))),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
                                   children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '06 JUNI 2023',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12),
-                                        ),
-                                        SizedBox(
-                                          width: 150,
-                                        ),
-                                        Icon(
-                                          Icons.close,
-                                          size: 20,
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
                                     Text(
-                                      'Bayar Biaya Pendaftaran',
+                                      '06 JUNI 2023',
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 18),
+                                          fontSize: 12),
                                     ),
                                     SizedBox(
-                                      height: 10,
+                                      width: 150,
                                     ),
-                                    Text(
-                                      'Total Pembayaran Rp. 750.000"',
-                                      style:
-                                          TextStyle(color: Colors.black, fontSize: 12),
-                                    ),
-                                    Text(
-                                      'telah berhasil',
-                                      style:
-                                          TextStyle(color: Colors.black, fontSize: 12),
+                                    Icon(
+                                      Icons.close,
+                                      size: 20,
                                     )
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          ),
-                        ),
-                    ],
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Bayar Biaya Pendaftaran',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Total Pembayaran Rp. 750.000"',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                                Text(
+                                  'telah berhasil',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                   Padding(
-                    padding: const EdgeInsets.only( top: 15),
-                    child: Container(
-                      height: 120,
-                      width: 330,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black87,
-                                blurRadius: 2,
-                                offset: const Offset(0, 1)),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Container(
+                  height: 120,
+                  width: 330,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black87,
+                            blurRadius: 2,
+                            offset: const Offset(0, 1)),
+                      ],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, top: 20, bottom: 40),
+                        child: Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                  image: AssetImage('assets/LogoPondok.png'))),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, top: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  '06 JUNI 2023',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
+                                ),
+                                SizedBox(
+                                  width: 150,
+                                ),
+                                Icon(
+                                  Icons.close,
+                                  size: 20,
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Bayar Syariah',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Total Pembayaran Rp. 750.000"',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 12),
+                            ),
+                            Text(
+                              'telah berhasil',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 12),
+                            )
                           ],
-                          borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10, top: 20, bottom: 40),
-                                child: Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage('assets/LogoPondok.png'))),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20, top: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '06 JUNI 2023',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12),
-                                        ),
-                                        SizedBox(
-                                          width: 150,
-                                        ),
-                                        Icon(
-                                          Icons.close,
-                                          size: 20,
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      'Bayar Syariah',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Total Pembayaran Rp. 750.000"',
-                                      style:
-                                          TextStyle(color: Colors.black, fontSize: 12),
-                                    ),
-                                    Text(
-                                      'telah berhasil',
-                                      style:
-                                          TextStyle(color: Colors.black, fontSize: 12),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          ),
                         ),
+                      )
                     ],
                   ),
+                ),
+              ),
+            ],
           ),
+        ),
       ),
-   );
+    );
   }
 }
-
- 

@@ -24,7 +24,7 @@ class AddFormController extends GetxController {
       );
     }else{
       Get.defaultDialog(
-        middleText: "Antum Gagal Ditambahkan",
+        middleText: "Berhasil Upload",
         textConfirm: "OK",
         confirmTextColor: Colors.white,
         buttonColor: Colors.blueAccent,
